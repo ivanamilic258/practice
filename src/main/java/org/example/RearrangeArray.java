@@ -30,18 +30,16 @@ public class RearrangeArray {
             int n = Integer.parseInt(args[1]);
             int k = Integer.parseInt(args[2]);
 
-            int[] newArray=new int[n];
-            for(int i = 0; i <n; i++){
-                if (i<=n-k-1){
-                   newArray[i+k]=arr[i];
-                } else{
-                    newArray[i-n+k]=arr[i];
-                }
 
+            int[] sol1 = solution1(arr, n, k);
+            System.out.println("Solution 1");
+            for (int na : sol1) {
+                System.out.println(na);
             }
 
-            System.out.println("Solution");
-            for (int na : newArray) {
+            int[] sol2 = solution2(arr, n, k);
+            System.out.println("Solution 2");
+            for (int na : sol2) {
                 System.out.println(na);
             }
 
@@ -50,5 +48,27 @@ public class RearrangeArray {
         }
 
 
+    }
+
+    private static int[] solution1(int[] arr, int n, int k){
+//        translate
+
+        int[] newArray=new int[n];
+        for(int i = 0; i <n; i++) {
+            if (i <= n - k - 1) {
+                newArray[i + k] = arr[i];
+            } else {
+                newArray[i - n + k] = arr[i];
+            }
+        }
+        return newArray;
+    }
+    private static int[] solution2(int[] arr, int n, int k){
+//        1. Divide the array two parts: 1,2,3,4 and 5, 6
+//        2. Reverse first part: 4,3,2,1,5,6
+//        3. Reverse second part: 4,3,2,1,6,5
+//        4. Reverse the whole array: 5,6,1,2,3,4
+        int[] newArray=new int[n];
+        return newArray;
     }
 }
