@@ -1,5 +1,8 @@
 package org.example;
 
+import java.text.MessageFormat;
+import java.util.Arrays;
+
 public class RearrangeArray {
 
 //Problem: Rotate an array of n elements to the right by k steps. For example, with n
@@ -64,11 +67,13 @@ public class RearrangeArray {
         return newArray;
     }
     private static int[] solution2(int[] arr, int n, int k){
-//        1. Divide the array two parts: 1,2,3,4 and 5, 6
-//        2. Reverse first part: 4,3,2,1,5,6
-//        3. Reverse second part: 4,3,2,1,6,5
-//        4. Reverse the whole array: 5,6,1,2,3,4
+//        Divide the array two parts: 1,2,3,4 and 5, 6
+
         int[] newArray=new int[n];
+        int[] arr1 = Arrays.copyOfRange(arr, 0,n-k);
+        int[] arr2 = Arrays.copyOfRange(arr, n-k,n);
+       System.arraycopy(arr2,0,newArray,0, arr2.length);
+       System.arraycopy(arr1,0,newArray,k, arr1.length);
         return newArray;
     }
 }
